@@ -1,0 +1,230 @@
+.master-product-page {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.top, .bottom{
+  border: 1px solid black;
+  padding: 10px;
+  overflow: hidden;
+  margin-bottom: 15px;
+}
+
+/* Search */
+.search-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.search-box select,
+.search-box input {
+  padding: 6px;
+  min-width: 180px;
+}
+
+.btn-search {
+  background: #8bc34a;
+  border: none;
+  padding: 6px 16px;
+  cursor: pointer;
+}
+
+/* Actions */
+.action-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.action-box button {
+  background: #8bc34a;
+  border: none;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+/* Page size */
+.page-size {
+  margin-bottom: 10px;
+}
+
+.page-size select {
+  margin: 0 6px;
+}
+
+/* Table */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #000;
+  padding: 6px;
+  text-align: center;
+  font-size: 16;
+}
+
+.data-table th {
+  background: #eee;
+}
+
+/* Action buttons */
+.action-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  border: none;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.btn-edit {
+  background-color: #2196f3;
+  color: #fff;
+}
+
+.btn-delete {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.btn-search,
+.action-box button,
+.btn-edit,
+.btn-delete {
+  border-radius: 0;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Popup chính */
+/* .modal-content {
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 8px;
+  width: 500px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+} */
+
+/* Tiêu đề popup */
+/* .modal-content h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+} */
+
+/* Hàng form (2 cột) */
+/* .form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+} */
+
+/* Nhóm label + input */
+/* .form-group {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.form-group .required {
+  color: red;
+} */
+
+/* Input text/number */
+/* .form-group input {
+  padding: 6px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+} */
+
+/* Nút hành động */
+/* .modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.btn-cancel {
+  padding: 6px 20px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-save {
+  padding: 6px 20px;
+  background-color: #c1d9a0;
+  border: 1px solid #b5c99a;
+  border-radius: 4px;
+  cursor: pointer;
+} */
+
+/* css message */
+.log-message {
+  padding: 10px 24px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  animation: fadeIn 0.3s ease;
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+}
+
+.log-message.success {
+  background: #e6f4ea;
+  color: #1e4620;
+  border-left: 4px solid #2e7d32;
+  width: 300px;
+}
+
+.log-message.error {
+  background: #fdecea;
+  color: #611a15;
+  border-left: 4px solid #d32f2f;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
