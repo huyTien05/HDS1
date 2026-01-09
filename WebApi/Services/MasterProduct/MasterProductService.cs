@@ -13,13 +13,185 @@ namespace WebApi.Services.MasterProduct
         {
             _context = context;
         }
-        public async Task<IEnumerable<MasterProductPageModel>> GetListAsync(
-        string? field,
-        string? keyword)
+        // public async Task<MasterProductResultModel<MasterProductPageModel>> GetListAsync(
+        //     int pageIndex,
+        //     int pageSize,
+        // string? field,
+        // string? keyword)
+        // {
+
+        //     var sql = new StringBuilder(" WHERE 1 = 1 ");
+        //     var parameters = new DynamicParameters();
+        //     using var connection = _context.CreateConnection();
+
+        //     field = field?.Trim().ToLower();
+        //     keyword = keyword?.Trim();
+
+        //     // CHỈ FILTER KHI ĐỦ ĐIỀU KIỆN TÌM KIẾM
+        //     if (!string.IsNullOrWhiteSpace(field) && 
+        //         !string.IsNullOrWhiteSpace(keyword))
+        //     {
+        //         switch (field)
+        //         {
+        //             case "id":
+        //                 if (Guid.TryParse(keyword, out var id))
+        //                     sql.Append(" AND Id = @Id ");
+        //                 break;
+
+        //             case "productcode":
+        //                 sql.Append(" AND ProductCode LIKE @Keyword ");
+        //                 break;
+
+        //             case "productname":
+        //                 sql.Append(" AND ProductName LIKE @Keyword ");
+        //                 break;
+
+        //             case "unit":
+        //                 sql.Append(" AND Unit LIKE @Keyword ");
+        //                 break;
+
+        //             case "specification":
+        //                 sql.Append(" AND Specification LIKE @Keyword ");
+        //                 break;
+
+        //             case "quantityperbox":
+        //                 if (int.TryParse(keyword, out var qty))
+        //                     sql.Append(" AND QuantityPerBox = @Quantity ");
+        //                 break;
+
+        //             case "productweight":
+        //                 if (decimal.TryParse(keyword, out var weight))
+        //                     sql.Append(" AND ProductWeight = @Weight ");
+        //                 break;
+        //         }
+        //     }
+
+        //     // return await connection.QueryAsync<MasterProductPageModel>(
+        //     //     sql.ToString(),
+        //     //     new
+        //     //     {
+        //     //         Id = Guid.TryParse(keyword, out var gid) ? gid : Guid.Empty,
+        //     //         Keyword = $"%{keyword}%",
+        //     //         Quantity = int.TryParse(keyword, out var q) ? q : 0,
+        //     //         Weight = decimal.TryParse(keyword, out var w) ? w : 0
+        //     //     }
+        //     // );
+
+        //     var countSql = $@"
+        //         SELECT COUNT(1)
+        //         FROM MasterProduct
+        //         {sql};
+        //     ";
+        //     var totalItems = await connection.ExecuteScalarAsync<int>(
+        //         countSql, parameters);
+            
+        //     var dataSql = $@"
+        //         SELECT
+        //             Id,
+        //             ProductCode,
+        //             ProductName,
+        //             Unit,
+        //             Specification,
+        //             QuantityPerBox,
+        //             ProductWeight
+        //         FROM MasterProduct
+        //         {sql}
+        //         ORDER BY ProductName
+        //         OFFSET @Offset ROWS
+        //         FETCH NEXT @PageSize ROWS ONLY;
+        //     ";
+
+        //     parameters.Add("@Offset", (pageIndex - 1) * pageSize);
+        //     parameters.Add("@PageSize", pageSize);
+
+        //     var items = await connection.QueryAsync<MasterProductPageModel>(
+        //         dataSql, parameters);
+
+        //     return new MasterProductResultModel<MasterProductPageModel>
+        //     {
+        //         Items = items,
+        //         PageIndex = pageIndex,
+        //         PageSize = pageSize,
+        //         TotalItems = totalItems
+        //     };
+        // }
+        public async Task<MasterProductResultModel<MasterProductPageModel>> GetListAsync(
+            int pageIndex,
+            int pageSize,
+            string? field,
+            string? keyword)
         {
+            var sql = new StringBuilder(" WHERE 1 = 1 ");
+            var parameters = new DynamicParameters();
+
             using var connection = _context.CreateConnection();
 
-            var sql = new StringBuilder(@"
+            field = field?.Trim().ToLower();
+            keyword = keyword?.Trim();
+
+            if (!string.IsNullOrWhiteSpace(field) &&
+                !string.IsNullOrWhiteSpace(keyword))
+            {
+                switch (field)
+                {
+                    case "id":
+                        if (Guid.TryParse(keyword, out var id))
+                        {
+                            sql.Append(" AND Id = @Id ");
+                            parameters.Add("@Id", id);
+                        }
+                        break;
+
+                    case "productcode":
+                        sql.Append(" AND ProductCode LIKE @Keyword ");
+                        parameters.Add("@Keyword", $"%{keyword}%");
+                        break;
+
+                    case "productname":
+                        sql.Append(" AND ProductName LIKE @Keyword ");
+                        parameters.Add("@Keyword", $"%{keyword}%");
+                        break;
+
+                    case "unit":
+                        sql.Append(" AND Unit LIKE @Keyword ");
+                        parameters.Add("@Keyword", $"%{keyword}%");
+                        break;
+
+                    case "specification":
+                        sql.Append(" AND Specification LIKE @Keyword ");
+                        parameters.Add("@Keyword", $"%{keyword}%");
+                        break;
+
+                    case "quantityperbox":
+                        if (int.TryParse(keyword, out var qty))
+                        {
+                            sql.Append(" AND QuantityPerBox = @Quantity ");
+                            parameters.Add("@Quantity", qty);
+                        }
+                        break;
+
+                    case "productweight":
+                        if (decimal.TryParse(keyword, out var weight))
+                        {
+                            sql.Append(" AND ProductWeight = @Weight ");
+                            parameters.Add("@Weight", weight);
+                        }
+                        break;
+                }
+            }
+
+            // COUNT
+            var countSql = $@"
+                SELECT COUNT(1)
+                FROM MasterProduct
+                {sql}
+            ";
+
+            var totalItems = await connection.ExecuteScalarAsync<int>(
+                countSql, parameters);
+
+            // DATA
+            var dataSql = $@"
                 SELECT
                     Id,
                     ProductCode,
@@ -29,62 +201,27 @@ namespace WebApi.Services.MasterProduct
                     QuantityPerBox,
                     ProductWeight
                 FROM MasterProduct
-                WHERE 1 = 1
-            ");
+                {sql}
+                ORDER BY ProductName
+                OFFSET @Offset ROWS
+                FETCH NEXT @PageSize ROWS ONLY;
+            ";
 
-            field = field?.Trim().ToLower();
-            keyword = keyword?.Trim();
+            parameters.Add("@Offset", (pageIndex - 1) * pageSize);
+            parameters.Add("@PageSize", pageSize);
 
-            // CHỈ FILTER KHI ĐỦ ĐIỀU KIỆN TÌM KIẾM
-            if (!string.IsNullOrWhiteSpace(field) && 
-                !string.IsNullOrWhiteSpace(keyword))
+            var items = await connection.QueryAsync<MasterProductPageModel>(
+                dataSql, parameters);
+
+            return new MasterProductResultModel<MasterProductPageModel>
             {
-                switch (field)
-                {
-                    case "id":
-                        if (Guid.TryParse(keyword, out var id))
-                            sql.Append(" AND Id = @Id ");
-                        break;
-
-                    case "productcode":
-                        sql.Append(" AND ProductCode LIKE @Keyword ");
-                        break;
-
-                    case "productname":
-                        sql.Append(" AND ProductName LIKE @Keyword ");
-                        break;
-
-                    case "unit":
-                        sql.Append(" AND Unit LIKE @Keyword ");
-                        break;
-
-                    case "specification":
-                        sql.Append(" AND Specification LIKE @Keyword ");
-                        break;
-
-                    case "quantityperbox":
-                        if (int.TryParse(keyword, out var qty))
-                            sql.Append(" AND QuantityPerBox = @Quantity ");
-                        break;
-
-                    case "productweight":
-                        if (decimal.TryParse(keyword, out var weight))
-                            sql.Append(" AND ProductWeight = @Weight ");
-                        break;
-                }
-            }
-
-            return await connection.QueryAsync<MasterProductPageModel>(
-                sql.ToString(),
-                new
-                {
-                    Id = Guid.TryParse(keyword, out var gid) ? gid : Guid.Empty,
-                    Keyword = $"%{keyword}%",
-                    Quantity = int.TryParse(keyword, out var q) ? q : 0,
-                    Weight = decimal.TryParse(keyword, out var w) ? w : 0
-                }
-            );
+                Items = items,
+                PageIndex = pageIndex,
+                PageSize = pageSize,
+                TotalItems = totalItems
+            };
         }
+
 
         public async Task<MasterProductPageModel> CreateAsync(
         MasterProductPageModel model)

@@ -1,0 +1,171 @@
+body{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding:20px 0px;
+}
+
+.saleout-page {
+  width: 100%;
+  /* width: 1480px;  */
+  border: 2px solid #000;
+  padding: 15px;
+  margin: auto;
+   /* height: 100vh;  */
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 5px;
+}
+
+.top {
+  border: 2px solid #000;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.search-box {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.search-box select,
+.search-box input {
+  padding: 6px;
+  min-width: 180px;
+  border: 1px solid #000;
+  border-radius: 5px;
+}
+
+.search-box input{
+  min-width: 250px;
+}
+
+.btn-search {
+  background: #04ba47;
+  border: 2px solid #000;
+  padding: 4px 16px;
+  cursor: pointer;
+}
+
+.action-box {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.action-box button {
+  background: #04ba47;
+  border: 2px solid #000;
+  padding: 4px 14px;
+  cursor: pointer;
+}
+
+.page-size {
+  margin-bottom: 10px;
+}
+
+.page-size select {
+  margin: 0 6px;
+  border: 1px solid #000;
+}
+
+.data-table1 {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+
+.data-table1 td {
+  border: 2px solid #000;
+  padding: 6px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.data-table1 th {
+  background: #04ba47;
+  white-space: nowrap;
+  color: #000;
+  padding: 12px;
+  font-weight: 700;
+  border: 2px solid #000;
+  font-size: 18px;
+}
+
+.data-table1 tbody tr:hover {
+  background: #f4f4f4;
+}
+
+.buton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.new {
+  border: 1px solid #000;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 6px;
+  background: #fff;
+}
+
+.btn-edito {
+  background-color: #2196f3;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.btn-dele {
+  background-color: #f44336;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.log-message {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  padding: 10px 18px;
+  border-radius: 0;           
+  font-size: 14px;
+  z-index: 2000;
+  animation: fadeIn 0.3s ease;
+  max-width: 320px;
+}
+
+.log-message.success {
+  background: #e6f4ea;
+  color: #1e4620;
+  border-left: 4px solid #04ba47;
+}
+
+.log-message.error {
+  background: #fdecea;
+  color: #611a15;
+  border-left: 4px solid #d32f2f;
+}
+
+button,
+.btn-search,
+.action-box button,
+.new {
+  border-radius: 5px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

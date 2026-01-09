@@ -1,0 +1,82 @@
+.modal-content {
+  background: #fff;
+  padding: 10px 10px;
+  width: 600px;
+  max-width: 90%;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form popup */
+
+/* Fade hiệu ứng */
+@keyframes fadeIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* Nhóm dòng */
+.form-row {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+/* Nhóm form mỗi ô */
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select {
+  height: 38px;
+  padding: 6px 10px;
+  border: 1px solid black;
+}
+
+/* Required */
+.required {
+  color: red;
+}
+
+/* Button actions */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 5px;
+}
+
+.btn-cancel {
+  background: #e9e9e9;
+  color: #000;
+  border: 1px solid black;
+  padding: 6px 18px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-cancel:hover {
+  background: #d6d6d6;
+}
+
+.btn-save {
+  background: #26be47;
+  color: #000;
+  border: 1px solid black;
+  padding: 6px 18px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-save:hover {
+  background: #18ae20;
+}

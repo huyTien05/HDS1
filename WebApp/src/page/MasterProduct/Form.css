@@ -1,7 +1,6 @@
 .modal-content {
   background-color: #fff;
   padding: 25px 30px;
-  border-radius: 8px;
   width: 500px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
   display: flex;
@@ -44,8 +43,8 @@
 .form-group input {
   padding: 6px 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
   font-size: 14px;
+  border-radius: 5px;
 }
 
 /* Nút hành động */
@@ -58,16 +57,16 @@
 
 .btn-cancel {
   padding: 6px 20px;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  background-color: #ffffff;
+  border: 1px solid black;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 .btn-save {
   padding: 6px 20px;
-  background-color: #c1d9a0;
-  border: 1px solid #b5c99a;
-  border-radius: 4px;
+  background-color: #3fdb4c;
+  border: 1px solid black;
   cursor: pointer;
+  border-radius: 5px;
 }

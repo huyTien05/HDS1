@@ -123,7 +123,6 @@ E:\HDS\WebApi\obj\Debug\net8.0\staticwebassets.build.json
 E:\HDS\WebApi\obj\Debug\net8.0\staticwebassets.build.json.cache
 E:\HDS\WebApi\obj\Debug\net8.0\staticwebassets.development.json
 E:\HDS\WebApi\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-E:\HDS\WebApi\obj\Debug\net8.0\swae.build.ex.cache
 E:\HDS\WebApi\obj\Debug\net8.0\WebApi.csproj.Up2Date
 E:\HDS\WebApi\obj\Debug\net8.0\WebApi.dll
 E:\HDS\WebApi\obj\Debug\net8.0\refint\WebApi.dll
@@ -133,3 +132,17 @@ E:\HDS\WebApi\obj\Debug\net8.0\ref\WebApi.dll
 E:\HDS\webapi\bin\Debug\net8.0\EPPlus.System.Drawing.dll
 E:\HDS\webapi\bin\Debug\net8.0\runtimes\win\lib\net7.0\Microsoft.Win32.SystemEvents.dll
 E:\HDS\webapi\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Drawing.Common.dll
+E:\HDS\webapi\obj\Debug\net8.0\WebApi.sourcelink.json
+E:\HDS\webapi\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+E:\HDS\webapi\bin\Debug\net8.0\MailKit.dll
+E:\HDS\webapi\bin\Debug\net8.0\MimeKit.dll
+E:\HDS\webapi\bin\Debug\net8.0\Google.Apis.dll
+E:\HDS\webapi\bin\Debug\net8.0\Google.Apis.Auth.dll
+E:\HDS\webapi\bin\Debug\net8.0\Google.Apis.Core.dll
+E:\HDS\webapi\bin\Debug\net8.0\Google.Apis.Gmail.v1.dll
+E:\HDS\webapi\bin\Debug\net8.0\Newtonsoft.Json.dll
+E:\HDS\webapi\bin\Debug\net8.0\System.CodeDom.dll
+E:\HDS\webapi\bin\Debug\net8.0\System.Management.dll
+E:\HDS\webapi\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
+E:\HDS\webapi\bin\Debug\net8.0\credentials.json
+E:\HDS\webapi\bin\Debug\net8.0\gmail_token.json

@@ -4,7 +4,9 @@ namespace WebApi.Services.MasterProduct
 {
     public interface IMasterProductService
     {
-        Task<IEnumerable<MasterProductPageModel>> GetListAsync(
+        Task<MasterProductResultModel<MasterProductPageModel>> GetListAsync(
+            int pageIndex,
+            int pageSize,
             string? field,
             string? keyword);
         Task<MasterProductPageModel> CreateAsync(MasterProductPageModel model);

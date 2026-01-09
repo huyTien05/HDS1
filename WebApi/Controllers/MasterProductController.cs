@@ -19,12 +19,27 @@ namespace WebApi.Controllers
             _productService = productService;
         }
 
+        // [HttpGet]
+        // public async Task<IActionResult> GetList(
+        //     [FromQuery] string? field,
+        //     [FromQuery] string? keyword)
+        // {
+        //     var result = await _service.GetListAsync(field, keyword);
+        //     return Ok(result);
+        // }
         [HttpGet]
         public async Task<IActionResult> GetList(
-            [FromQuery] string? field,
-            [FromQuery] string? keyword)
+            [FromQuery] int pageIndex = 1,
+            [FromQuery] int pageSize = 10,
+            [FromQuery] string? field = null,
+            [FromQuery] string? keyword = null)
         {
-            var result = await _service.GetListAsync(field, keyword);
+            var result = await _service.GetListAsync(
+                pageIndex,
+                pageSize,
+                field,
+                keyword
+            );
             return Ok(result);
         }
 
@@ -64,7 +79,7 @@ namespace WebApi.Controllers
             }
         }
 
-        [HttpDelete("delete-page/{id}")]
+        [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] Guid id)
         {
             try
@@ -90,7 +105,9 @@ namespace WebApi.Controllers
             );
         }
 
+        
         [HttpPost("upload-excel")]
+        [Consumes("multipart/form-data")]
         public async Task<IActionResult> UploadExcel([FromForm] IFormFile file)
         {
             try

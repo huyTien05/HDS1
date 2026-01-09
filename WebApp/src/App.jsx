@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import MasterProductPage from "./page/MasterProduct/MasterProductPage";
-// import SaleOutPage from "./pages/SaleOut/SaleOutPage";
+import SaleOutPage from "./page/SaleOut/SaleOutPage";
+import EmailSend from "./page/Email/EmailSend";
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
       <Route path="/master-product" element={<MasterProductPage />} />
 
       {/* Sale Out */}
-      {/* <Route path="/sale-out" element={<SaleOutPage />} /> */}
+      <Route path="/sale-out" element={<SaleOutPage />} />
+
+      <Route path="/email" element={<EmailSend />} />
 
       {/* 404 */}
       <Route path="*" element={<h2>404 - Not Found</h2>} />
